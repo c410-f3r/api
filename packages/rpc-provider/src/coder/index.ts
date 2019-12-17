@@ -37,8 +37,9 @@ export default class RpcCoder {
   }
 
   public encodeObject (method: string, params: any | any[]): JsonRpcRequest {
+    let id = ++this.id;
     return {
-      id: ++this.id,
+      id: id.toString(),
       jsonrpc: '2.0',
       method,
       params
