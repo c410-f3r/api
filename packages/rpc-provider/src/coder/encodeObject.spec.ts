@@ -19,7 +19,7 @@ describe('encodeObject', (): void => {
     expect(
       coder.encodeObject('method', 'params')
     ).toEqual({
-      id: 1,
+      id: "1",
       jsonrpc: '2.0',
       method: 'method',
       params: 'params'

@@ -61,7 +61,7 @@ describe('send', (): void => {
 
   it('passes the body through correctly', (): Promise<void> => {
     createMock([{
-      id: 1,
+      id: "1",
       method: 'test_body',
       reply: {
         result: 'ok'
@@ -73,13 +73,13 @@ describe('send', (): void => {
       .then((): void => {
         expect(
           (mock.body as any).test_body
-        ).toEqual('{"id":1,"jsonrpc":"2.0","method":"test_body","params":["param"]}');
+        ).toEqual('{"id":"1","jsonrpc":"2.0","method":"test_body","params":["param"]}');
       });
   });
 
   it('throws error when !response.ok', (): Promise<any> => {
     createMock([{
-      id: 1,
+      id: "1",
       error: {
         code: 666,
         message: 'error'
@@ -95,7 +95,7 @@ describe('send', (): void => {
 
   it('adds subscriptions', (): Promise<void> => {
     createMock([{
-      id: 1,
+      id: "1",
       method: 'test_sub',
       reply: {
         result: 1

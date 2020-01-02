@@ -24,27 +24,21 @@ describe('decodeResponse', (): void => {
     ).toThrow(/Invalid jsonrpc/);
   });
 
-  it('expects a valid id field', (): void => {
-    expect(
-      (): any => coder.decodeResponse({ jsonrpc: '2.0' } as JsonRpcResponse)
-    ).toThrow(/Invalid id/);
-  });
-
   it('expects a valid result field', (): void => {
     expect(
-      (): any => coder.decodeResponse({ id: 1, jsonrpc: '2.0' } as JsonRpcResponse)
+      (): any => coder.decodeResponse({ id: "1", jsonrpc: '2.0' } as JsonRpcResponse)
     ).toThrow(/No result/);
   });
 
   it('throws any error found', (): void => {
     expect(
-      (): any => coder.decodeResponse({ id: 1, jsonrpc: '2.0', error: { code: 123, message: 'test error' } } as JsonRpcResponse)
+      (): any => coder.decodeResponse({ id: "1", jsonrpc: '2.0', error: { code: 123, message: 'test error' } } as JsonRpcResponse)
     ).toThrow(/123: test error/);
   });
 
   it('returns the result', (): void => {
     expect(
-      coder.decodeResponse({ id: 1, jsonrpc: '2.0', result: 'some result' } as JsonRpcResponse)
+      coder.decodeResponse({ id: "1", jsonrpc: '2.0', result: 'some result' } as JsonRpcResponse)
     ).toEqual('some result');
   });
 });

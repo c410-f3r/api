@@ -4,7 +4,7 @@
 
 import { JsonRpcRequest, JsonRpcResponse, JsonRpcResponseBaseError } from '../types';
 
-import { assert, isUndefined, isNumber, isString } from '@polkadot/util';
+import { assert, isUndefined, isString } from '@polkadot/util';
 
 export default class RpcCoder {
   private id = 0;
@@ -14,8 +14,6 @@ export default class RpcCoder {
     assert(response.jsonrpc === '2.0', 'Invalid jsonrpc field in decoded object');
 
     const isSubscription = !isUndefined(response.params) && !isUndefined(response.method);
-
-    assert(isNumber(response.id) || (isSubscription && isNumber(response.params.subscription)), 'Invalid id field in decoded object');
 
     this.checkError(response.error);
 
@@ -38,7 +36,7 @@ export default class RpcCoder {
 
   public encodeObject (method: string, params: any | any[]): JsonRpcRequest {
     return {
-      id: ++this.id,
+      id: (++this.id).toString(),
       jsonrpc: '2.0',
       method,
       params

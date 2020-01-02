@@ -14,6 +14,6 @@ describe('encodeJson', (): void => {
   it('encodes a valid JsonRPC JSON string', (): void => {
     expect(
       coder.encodeJson('method', 'params')
-    ).toEqual('{"id":1,"jsonrpc":"2.0","method":"method","params":"params"}');
+    ).toEqual('{"id":"1","jsonrpc":"2.0","method":"method","params":"params"}');
   });
 });

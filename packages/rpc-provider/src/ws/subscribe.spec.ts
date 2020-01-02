@@ -40,7 +40,7 @@ describe('subscribe', (): void => {
 
   it('adds subscriptions', (): Promise<void> => {
     createMock([{
-      id: 1,
+      id: "1",
       method: 'test_sub',
       reply: {
         result: 1

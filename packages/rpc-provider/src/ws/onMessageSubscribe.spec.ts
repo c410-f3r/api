@@ -14,7 +14,7 @@ describe('onMessageSubscribe', (): void => {
   it('calls the subscriber with data', (done): void => {
     // We need to access the private WsProvider property 'handlers' here which otherwise triggers a tslint error..
     (provider as any).handlers[11] = {
-      callback: (_: any, id: number): void => {
+      callback: (_: any, id: string): void => {
         expect(typeof id).toBe('number');
       },
       method: 'test',
@@ -36,7 +36,7 @@ describe('onMessageSubscribe', (): void => {
   it('calls the subscriber with error', (done): void => {
     // We need to access the private WsProvider property 'handlers' here which otherwise trigger a tslint error..
     (provider as any).handlers[11] = {
-      callback: (_: any, id: number): void => {
+      callback: (_: any, id: string): void => {
         expect(typeof id).toBe('number');
       },
       method: 'test',

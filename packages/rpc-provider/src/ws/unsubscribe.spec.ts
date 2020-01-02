@@ -41,7 +41,7 @@ describe('subscribe', (): void => {
   it('removes subscriptions', (): Promise<boolean> => {
     createMock([
       {
-        id: 1,
+        id: "1",
         method: 'subscribe_test',
         reply: {
           result: 1
@@ -69,7 +69,7 @@ describe('subscribe', (): void => {
 
   it('fails when sub not found', (): Promise<void> => {
     createMock([{
-      id: 1,
+      id: "1",
       method: 'subscribe_test',
       reply: {
         result: 1

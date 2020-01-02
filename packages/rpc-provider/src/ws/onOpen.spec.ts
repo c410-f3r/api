@@ -25,7 +25,7 @@ describe('onOpen', (): void => {
 
   it('sends messages when connected', (): Promise<void> => {
     const ws = createWs([{
-      id: 1,
+      id: "1",
       method: 'test_queue',
       reply: {
         result: 'ok'
